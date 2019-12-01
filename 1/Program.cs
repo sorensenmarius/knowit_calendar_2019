@@ -16,10 +16,11 @@ namespace _1
             foreach(int i in s)
             {
                 currentSheep += i;
+
                 if (currentSheep < currentSize)
                 {
-                    currentSize--;
                     currentSheep = 0;
+                    currentSize--;
                     faileddays += 1;
                 } else
                 {
@@ -27,13 +28,12 @@ namespace _1
                     currentSize++;
                     faileddays = 0;
                 }
-
-                totaldays += 1;
                 if (faileddays == 5)
                 {
                     Console.WriteLine("Survived " + totaldays + " days");
                     break;
                 }
+                totaldays += 1;
             }
         }
     }
