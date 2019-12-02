@@ -20,21 +20,20 @@ func main() {
 		curr := s.Text()
 		count := 0
 		started := false
-		prev := 0
+		prev := rune(0)
 		for _, char := range curr {
-			thischar := int(char)
-			if thischar == 32 && prev == 35 {
+			if char == 32 && prev == 35 {
 				started = true
 			}
-			if thischar == 35 && prev == 32 {
+			if char == 35 && prev == 32 {
 				started = false
 				globalcount += count
 				count = 0
 			}
-			if thischar == 32 && started {
+			if char == 32 && started {
 				count++
 			}
-			prev = thischar
+			prev = char
 		}
 	}
 
