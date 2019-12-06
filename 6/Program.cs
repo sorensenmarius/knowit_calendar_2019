@@ -11,11 +11,20 @@ namespace _6
             Bitmap tmp = new Bitmap(bm.Width, bm.Height);
             for (int y = 0; y < bm.Height; y++)
             {
-                for (int x = 1; x < bm.Width; x++)
+                for (int x = 0; x < bm.Width; x++)
                 {
-                    Color c1 = bm.GetPixel(x - 1, y);
+                    if (x == 0 && y == 0) continue;
+                    Color c1;
                     Color c2 = bm.GetPixel(x, y);
-                    tmp.SetPixel(x, y, Color.FromArgb(c1.R ^ c2.R, c1.G ^ c2.G, c1.G ^ c2.B));
+                    if(x == 0)
+                    {
+                        c1 = bm.GetPixel(bm.Width - 1, y - 1);
+                    }
+                    else
+                    {
+                        c1 = bm.GetPixel(x - 1, y);
+                    }
+                    tmp.SetPixel(x, y, Color.FromArgb(c1.R ^ c2.R, c1.G ^ c2.G, c1.B ^ c2.B));
                 }
             }
             tmp.Save("result.jpg", ImageFormat.Jpeg);
